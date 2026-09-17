@@ -10,6 +10,32 @@ permissions:
   contents: read
 
 jobs:
+  install-awss:
+    # Test the public tap after publication, not an unmerged PR formula.
+    if: github.event_name == 'push'
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [macos-latest, ubuntu-latest]
+    runs-on: ${{ matrix.os }}
+    env:
+      HOMEBREW_NO_AUTO_UPDATE: '1'
+      HOMEBREW_NO_INSTALL_CLEANUP: '1'
+    steps:
+      - name: Install and test the published awss formula
+        shell: bash
+        run: |
+          if [[ "$RUNNER_OS" == Linux ]]; then
+            eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+          fi
+          brew install juthrbog/tap/awss
+          brew test juthrbog/tap/awss
+          awss --version
+          prefix="$(brew --prefix awss)"
+          test -s "$prefix/etc/bash_completion.d/awss"
+          test -s "$prefix/share/zsh/site-functions/_awss"
+          test -s "$prefix/share/fish/vendor_completions.d/awss.fish"
+
   syntax:
     runs-on: ubuntu-latest
     steps:
