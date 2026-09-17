@@ -1,0 +1,29 @@
+name: Validate formulae
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  syntax:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Validate Ruby syntax without executing formulae
+        shell: bash
+        run: |
+          shopt -s nullglob
+          formulae=(Formula/*.rb)
+          if [[ ${#formulae[@]} -eq 0 ]]; then
+            echo 'No formulae yet; awaiting the first stable release.'
+          fi
+          for formula in "${formulae[@]}"; do
+            ruby -c "$formula"
+          done
