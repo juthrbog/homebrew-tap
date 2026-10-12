@@ -2,28 +2,28 @@
 class Awss < Formula
   desc "Interactive AWS profile and region switcher"
   homepage "https://github.com/juthrbog/awss"
-  version "0.1.0"
+  version "0.1.1"
   license "Apache-2.0"
 
   on_macos do
     on_arm do
-      url "https://github.com/juthrbog/awss/releases/download/v0.1.0/awss_0.1.0_darwin_arm64.tar.gz"
-      sha256 "47452f31604633949c7355d22bb2756085b5f8b6e1edd31e3444b27c8ea78c70"
+      url "https://github.com/juthrbog/awss/releases/download/v0.1.1/awss_0.1.1_darwin_arm64.tar.gz"
+      sha256 "ff8d31c43161287518883d80ae100b476210811bb3c67dbd563e15ea23f4a0ba"
     end
     on_intel do
-      url "https://github.com/juthrbog/awss/releases/download/v0.1.0/awss_0.1.0_darwin_amd64.tar.gz"
-      sha256 "0dcaa218d01d1acf585c26ed9f991265773d68e39d0b5959e910d3d93c6157fe"
+      url "https://github.com/juthrbog/awss/releases/download/v0.1.1/awss_0.1.1_darwin_amd64.tar.gz"
+      sha256 "1700e6b95e2ec0ead68af005d33489cfa05a283100b5271f6eabce7599ac551b"
     end
   end
 
   on_linux do
     on_arm do
-      url "https://github.com/juthrbog/awss/releases/download/v0.1.0/awss_0.1.0_linux_arm64.tar.gz"
-      sha256 "353a0bb9f6f9a0c3d97bc78a136376238e82f71a30b405889a9bae1ffe69573c"
+      url "https://github.com/juthrbog/awss/releases/download/v0.1.1/awss_0.1.1_linux_arm64.tar.gz"
+      sha256 "fe391663b6b810d84ff98de4da2f8bac56e74769296645e9eebfea2395ecf041"
     end
     on_intel do
-      url "https://github.com/juthrbog/awss/releases/download/v0.1.0/awss_0.1.0_linux_amd64.tar.gz"
-      sha256 "82941535e90b4f9b08bb583e6153eccab8cba9bdeedc89205a4cbbf798e85439"
+      url "https://github.com/juthrbog/awss/releases/download/v0.1.1/awss_0.1.1_linux_amd64.tar.gz"
+      sha256 "7f3b658d5146c0f2428420c1fb921002934be82b08f6ea06ff77bc5d52f8a868"
     end
   end
 
