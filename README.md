@@ -37,6 +37,20 @@ awss init fish | source
 
 Start a new shell, then run `awss`. The formula also installs shell completions.
 
+## spotui
+
+[spotui](https://github.com/juthrbog/spotui) is a terminal Spotify player that
+plays through your own speakers. It needs Spotify Premium.
+
+```bash
+brew install juthrbog/tap/spotui
+```
+
+The formula installs the release binary for macOS on Apple Silicon, or for Linux
+on x86-64 and ARM64. On Linux, spotui uses the ALSA library of the system
+(`alsa-lib` or `libasound2`). Start it with `spotui`. The first stable release of
+spotui publishes `Formula/spotui.rb`.
+
 ## Maintenance
 
 - Source code, binary release assets, formula templates, and publishing automation
@@ -48,6 +62,10 @@ Start a new shell, then run `awss`. The formula also installs shell completions.
   `HOMEBREW_TAP_SSH_KEY` Actions secret, never in either repository.
 - Revoke/rotate that key in this repository's **Settings → Deploy keys**, then
   replace the corresponding Actions secret in awss.
+- spotui works the same way. Its release workflow generates `Formula/spotui.rb`,
+  and a second deploy key, "spotui release publisher", lets it push. The private
+  key is in spotui's `HOMEBREW_TAP_SSH_KEY` Actions secret. spotui has no
+  binary for macOS on Intel, so its formula requires Apple Silicon on macOS.
 - No separate bottle-building workflow is needed: the formula installs the
   already-built macOS/Linux release archives for amd64 and arm64.
 
