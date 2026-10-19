@@ -98,6 +98,35 @@ jobs:
           brew test juthrbog/tap/lazycloud
           lazycloud --version
 
+  install-lazybw:
+    # Test the public tap after publication, not an unmerged PR formula.
+    if: github.event_name == 'push'
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [macos-latest, ubuntu-latest]
+    runs-on: ${{ matrix.os }}
+    env:
+      HOMEBREW_NO_AUTO_UPDATE: '1'
+      HOMEBREW_NO_INSTALL_CLEANUP: '1'
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Install and test the published lazybw formula
+        shell: bash
+        run: |
+          if [[ ! -f Formula/lazybw.rb ]]; then
+            echo 'No lazybw formula yet; awaiting the next stable release.'
+            exit 0
+          fi
+          if [[ "$RUNNER_OS" == Linux ]]; then
+            eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+          fi
+          brew install juthrbog/tap/lazybw
+          brew test juthrbog/tap/lazybw
+          lazybw --version
+
   syntax:
     runs-on: ubuntu-latest
     steps:

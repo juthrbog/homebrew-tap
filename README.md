@@ -64,6 +64,20 @@ The formula installs the release binary for macOS or Linux, on amd64 or ARM64.
 SSM Connect also needs the AWS CLI and the Session Manager plugin. The next
 stable release of lazycloud publishes `Formula/lazycloud.rb`.
 
+## lazybw
+
+[lazybw](https://github.com/juthrbog/lazybw) is a terminal UI for the Bitwarden
+password manager.
+
+```bash
+brew install juthrbog/tap/lazybw
+```
+
+The formula installs the release binary for macOS or Linux, on amd64 or ARM64.
+lazybw also needs the Bitwarden CLI (`bw`), for example from
+`brew install bitwarden-cli`. The next stable release of lazybw publishes
+`Formula/lazybw.rb`.
+
 ## Maintenance
 
 - Source code, binary release assets, formula templates, and publishing automation
@@ -83,6 +97,9 @@ stable release of lazycloud publishes `Formula/lazycloud.rb`.
   `Formula/lazycloud.rb`, and a third deploy key, "lazycloud release
   publisher", lets it push. The private key is in lazycloud's
   `HOMEBREW_TAP_SSH_KEY` Actions secret.
+- lazybw works the same way. Its release workflow generates `Formula/lazybw.rb`,
+  and a fourth deploy key, "lazybw release publisher", lets it push. The
+  private key is in lazybw's `HOMEBREW_TAP_SSH_KEY` Actions secret.
 - No separate bottle-building workflow is needed: the formula installs the
   already-built macOS/Linux release archives for amd64 and arm64.
 
