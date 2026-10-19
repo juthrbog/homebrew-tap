@@ -51,6 +51,19 @@ on x86-64 and ARM64. On Linux, spotui uses the ALSA library of the system
 (`alsa-lib` or `libasound2`). Start it with `spotui`. The first stable release of
 spotui publishes `Formula/spotui.rb`.
 
+## lazycloud
+
+[lazycloud](https://github.com/juthrbog/lazycloud) is a terminal UI for browsing
+and managing AWS resources.
+
+```bash
+brew install juthrbog/tap/lazycloud
+```
+
+The formula installs the release binary for macOS or Linux, on amd64 or ARM64.
+SSM Connect also needs the AWS CLI and the Session Manager plugin. The next
+stable release of lazycloud publishes `Formula/lazycloud.rb`.
+
 ## Maintenance
 
 - Source code, binary release assets, formula templates, and publishing automation
@@ -66,6 +79,10 @@ spotui publishes `Formula/spotui.rb`.
   and a second deploy key, "spotui release publisher", lets it push. The private
   key is in spotui's `HOMEBREW_TAP_SSH_KEY` Actions secret. spotui has no
   binary for macOS on Intel, so its formula requires Apple Silicon on macOS.
+- lazycloud works the same way. Its release workflow generates
+  `Formula/lazycloud.rb`, and a third deploy key, "lazycloud release
+  publisher", lets it push. The private key is in lazycloud's
+  `HOMEBREW_TAP_SSH_KEY` Actions secret.
 - No separate bottle-building workflow is needed: the formula installs the
   already-built macOS/Linux release archives for amd64 and arm64.
 
