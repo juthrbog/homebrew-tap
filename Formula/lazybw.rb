@@ -2,28 +2,28 @@
 class Lazybw < Formula
   desc "Terminal UI for the Bitwarden password manager"
   homepage "https://github.com/juthrbog/lazybw"
-  version "0.3.0"
+  version "0.4.0"
   license "Apache-2.0"
 
   on_macos do
     on_arm do
-      url "https://github.com/juthrbog/lazybw/releases/download/v0.3.0/lazybw_0.3.0_darwin_arm64.tar.gz"
-      sha256 "a75af73dfdf700037e43c4ca8e1676f30be67aec329480f192c0f067102ec407"
+      url "https://github.com/juthrbog/lazybw/releases/download/v0.4.0/lazybw_0.4.0_darwin_arm64.tar.gz"
+      sha256 "1765d448d1ab8e1c830f0d1c59b7aa86fd6034c8b1e7d1e510e7be26b8fd15da"
     end
     on_intel do
-      url "https://github.com/juthrbog/lazybw/releases/download/v0.3.0/lazybw_0.3.0_darwin_amd64.tar.gz"
-      sha256 "5ca97e029aa2a9d52027a2589a128d9883f28f016cf80388da51c758d9e465d8"
+      url "https://github.com/juthrbog/lazybw/releases/download/v0.4.0/lazybw_0.4.0_darwin_amd64.tar.gz"
+      sha256 "381bd71f58458cfe3fdfa8a69137c482b1cd71408be4a027b0683070b84b6055"
     end
   end
 
   on_linux do
     on_arm do
-      url "https://github.com/juthrbog/lazybw/releases/download/v0.3.0/lazybw_0.3.0_linux_arm64.tar.gz"
-      sha256 "783228ffcdbdf15da99591b6572d5645892502d090f531ac44f5cfc3767b93e3"
+      url "https://github.com/juthrbog/lazybw/releases/download/v0.4.0/lazybw_0.4.0_linux_arm64.tar.gz"
+      sha256 "c698fa8a756742af9fa2f89234eebe73ef118e9b7d7cd75799e07d6e72964c1c"
     end
     on_intel do
-      url "https://github.com/juthrbog/lazybw/releases/download/v0.3.0/lazybw_0.3.0_linux_amd64.tar.gz"
-      sha256 "3fa74608a294d4532139b4b2578642523ccb0013d8818d4b3264fd20ac55f89f"
+      url "https://github.com/juthrbog/lazybw/releases/download/v0.4.0/lazybw_0.4.0_linux_amd64.tar.gz"
+      sha256 "5a1f20c4e0cd199ba2175615191d90f3b97f4240fd0166e873ceb7eaf2048317"
     end
   end
 
