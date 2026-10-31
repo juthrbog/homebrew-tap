@@ -127,6 +127,30 @@ jobs:
           brew test juthrbog/tap/lazybw
           lazybw --version
 
+  install-reeltty:
+    # Test the public tap after publication, not an unmerged PR formula.
+    # The formula is for Linux only: reeltty uses /dev/shm and the system libmpv.
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    env:
+      HOMEBREW_NO_AUTO_UPDATE: '1'
+      HOMEBREW_NO_INSTALL_CLEANUP: '1'
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Install and test the published reeltty formula
+        shell: bash
+        run: |
+          if [[ ! -f Formula/reeltty.rb ]]; then
+            echo 'No reeltty formula yet; awaiting the first stable release.'
+            exit 0
+          fi
+          eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+          brew install juthrbog/tap/reeltty
+          brew test juthrbog/tap/reeltty
+          reeltty --version
+
   syntax:
     runs-on: ubuntu-latest
     steps:
