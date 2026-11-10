@@ -2,8 +2,8 @@
 class Reeltty < Formula
   desc "Keyboard-driven YouTube player that runs in the terminal"
   homepage "https://github.com/juthrbog/reeltty"
-  url "https://github.com/juthrbog/reeltty/releases/download/v0.1.0/reeltty_0.1.0_source.tar.gz"
-  sha256 "ebf0f8337263d4e687a08ceee667f86cc400013ec26ff623cf0c82ce4be03e24"
+  url "https://github.com/juthrbog/reeltty/releases/download/v0.2.0/reeltty_0.2.0_source.tar.gz"
+  sha256 "a7b1e3af9e4b1e5fd4107c2629e4485cd4628f402207598546c42c57186b13bf"
   license any_of: ["MIT", "Apache-2.0"]
 
   # Video frames use Linux shared memory (/dev/shm).
