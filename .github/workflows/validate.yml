@@ -129,9 +129,13 @@ jobs:
 
   install-reeltty:
     # Test the public tap after publication, not an unmerged PR formula.
-    # The formula is for Linux only: reeltty uses /dev/shm and the system libmpv.
+    # The formula builds reeltty from source, with Homebrew's Rust and libmpv.
     if: github.event_name == 'push'
-    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [macos-latest, ubuntu-latest]
+    runs-on: ${{ matrix.os }}
     env:
       HOMEBREW_NO_AUTO_UPDATE: '1'
       HOMEBREW_NO_INSTALL_CLEANUP: '1'
@@ -146,7 +150,13 @@ jobs:
             echo 'No reeltty formula yet; awaiting the first stable release.'
             exit 0
           fi
-          eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+          if [[ "$RUNNER_OS" == macOS ]] && grep -q 'depends_on :linux' Formula/reeltty.rb; then
+            echo 'The reeltty formula is Linux-only; awaiting a release with macOS support.'
+            exit 0
+          fi
+          if [[ "$RUNNER_OS" == Linux ]]; then
+            eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+          fi
           brew install juthrbog/tap/reeltty
           brew test juthrbog/tap/reeltty
           reeltty --version
